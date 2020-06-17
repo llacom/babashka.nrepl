@@ -127,7 +127,7 @@
 
 (defn eldoc [ctx msg os opts]
   (let [ns-str (:ns msg)
-        sym-str (:sym msg)
+        sym-str (:symbol msg)
         sci-ns (when ns-str
                  (sci-utils/namespace-object (:env ctx) (symbol ns-str) nil false))]
     (sci/binding [vars/current-ns (or sci-ns @vars/current-ns)]

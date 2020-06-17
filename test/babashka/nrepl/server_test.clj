@@ -235,7 +235,7 @@
       (testing "eldoc"
         (testing "eldoc of inc"
           (bencode/write-bencode os {"op" "eldoc" "ns" "user"
-                                     "sym" "inc"
+                                     "symbol" "inc"
                                      "session" session "id" (new-id!)})
           (let [{:keys [docstring eldoc type]} (read-reply in session @id)]
             (is (str/includes? docstring "Returns a number one greater than num"))
@@ -249,7 +249,7 @@
                                      "session" session "id" (new-id!)})
           (read-reply in session @id)
           (bencode/write-bencode os {"op" "eldoc" "ns" "user"
-                                     "sym" "foo"
+                                     "symbol" "foo"
                                      "session" session "id" (new-id!)})
           (let [{:keys [docstring eldoc type]} (read-reply in session @id)]
             (is (str/includes? docstring "foo"))
@@ -263,7 +263,7 @@
                                      "session" session "id" (new-id!)})
           (read-reply in session @id)
           (bencode/write-bencode os {"op" "eldoc" "ns" "user"
-                                     "sym" "x"
+                                     "symbol" "x"
                                      "session" session "id" (new-id!)})
           (let [{:keys [docstring type]} (read-reply in session @id)]
             (is (str/includes? docstring "foo"))
